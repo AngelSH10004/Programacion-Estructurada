@@ -10,10 +10,13 @@
 
 #include <iostream> // Libreria para el manejo del flujo de entrada y salida.
 #include <limits>
+#include <ctime>
+#include "Libreria.cpp"
+
 using namespace std; //  Uso de la libreria STD.
 
 // Declaramos las variables
-int num[10] = {0};
+int num[50] = {0};
 int pos, valor;
 int inmenu;
 int opcion;
@@ -29,30 +32,13 @@ int main() //  Inicio del programa principal.
         {
         case 0: //  Opción para agregar numeros a la lista.
 
-            //  Mostramos los mensajes del menu.
-            cout << "\n==================================================\n";
-            cout << "Menu Principal\n";
-            cout << "1 - Ingresar un valor en la posicion que quieras.\n";
-            cout << "2 - Mostrar la lista de valores.\n";
-            cout << "3 - Mostrar sumatoria de todos los elementos.\n";
-            cout << "4 - Borrado y edicion de elementos.\n";
-            cout << "5 - Vaciar el Arreglo.\n";
-            cout << "6 - Salir.\n";
-            cout << "\n==================================================\nIngrese una Opcion del Menu [0-6]: ";
-            while (!(cin >> opcion))//  Verificamos si es numero lo que ingreso el usuario.
+            MenuPrincipal();
+            while (!(cin >> opcion)) //  Verificamos si es numero lo que ingreso el usuario.
             {
-                cin.clear();//  Vacía el buffer de entrada.
-                cin.ignore(numeric_limits<streamsize>::max(), '\n');//  Limpiando buffer.
+                cin.clear();                                         //  Vacía el buffer de entrada.
+                cin.ignore(numeric_limits<streamsize>::max(), '\n'); //  Limpiando buffer.
                 cout << "Valor invalido.";
-                cout << "\n==================================================\n";
-                cout << "Menu Principal\n";
-                cout << "1 - Ingresar un valor en la posicion que quieras.\n";
-                cout << "2 - Mostrar la lista de valores.\n";
-                cout << "3 - Mostrar sumatoria de todos los elementos.\n";
-                cout << "4 - Borrado y edicion de elementos.\n";
-                cout << "5 - Vaciar el Arreglo.\n";
-                cout << "6 - Salir.\n";
-                cout << "\n==================================================\nIngrese una Opcion del Menu [0-6]: ";
+                MenuPrincipal();
             }
         }
 
@@ -60,28 +46,8 @@ int main() //  Inicio del programa principal.
         {
         case 1: //  Agregar un numero a la lista.
 
-            for (int i = 0; i < 10; i++)
-            {
-                cout << "\n==================================================";
-                cout << "\nIngrese un valor y se le asignaraen la posicion: " << endl;
-                cin >> num[i];
-            }
-            cout << "\n==================================================";
-            cout << "\nVolver al menu.\n";
-            cout << "(0)-No.\n";
-            cout << "\n==================================================";
-            cout << "\nIngrese el numero del (0):";
-            while (!(cin >> inmenu) || inmenu != 0)//  Comprobacion para que ingrese solo numeros enteros.
-            {
-                cin.clear();//   Limpieza del buffer.
-                cin.ignore(numeric_limits<streamsize>::max(), '\n');// Limpia el buffer si no es una opcion valida.
-                cout << "Valor invalido.";
-                cout << "\n==================================================";
-                cout << "\nVolver al menu.\n";
-                cout << "(0)-No.\n";
-                cout << "\n==================================================";
-                cout << "\nIngrese el numero del (0):";
-            }
+            Agregar_Digitos(num);
+
             break;
 
         case 2: //   Muestra los datos de la lista.
@@ -104,10 +70,10 @@ int main() //  Inicio del programa principal.
             cout << "(0)-No.\n";
             cout << "\n==================================================";
             cout << "\nIngrese el numero del (0):";
-            while (!(cin >> inmenu) || inmenu != 0)//  Comprueba que sea un valor valido para volver al menu.
+            while (!(cin >> inmenu) || inmenu != 0) //  Comprueba que sea un valor valido para volver al menu.
             {
-                cin.clear();//  Limpia el buffer en caso de error.
-                cin.ignore(numeric_limits<streamsize>::max(), '\n');//  Limpia el buffer en caso de error.
+                cin.clear();                                         //  Limpia el buffer en caso de error.
+                cin.ignore(numeric_limits<streamsize>::max(), '\n'); //  Limpia el buffer en caso de error.
                 cout << "Valor invalido. ";
                 cout << "\n==================================================";
                 cout << "\nVolver al menu.\n";
@@ -133,10 +99,10 @@ int main() //  Inicio del programa principal.
             cout << "(0)-No.\n";
             cout << "\n==================================================";
             cout << "\nIngrese el numero del (0):";
-            while (!(cin >> inmenu) || inmenu != 0)//    Verifica que sea un entero y no otro tipo de dato.
+            while (!(cin >> inmenu) || inmenu != 0) //    Verifica que sea un entero y no otro tipo de dato.
             {
-                cin.clear();//       Limpia el buffer si hubiera algo mal escrito.
-                cin.ignore(numeric_limits<streamsize>::max(), '\n');// Limpia el buffer si no es un entero.
+                cin.clear();                                         //       Limpia el buffer si hubiera algo mal escrito.
+                cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Limpia el buffer si no es un entero.
                 cout << "Valor invalido. ";
 
                 cout << "\n==================================================";
@@ -174,10 +140,10 @@ int main() //  Inicio del programa principal.
                         cout << "(0)-No.\n";
                         cout << "\n==================================================";
                         cout << "\nIngrese el numero del (0):";
-                        while (!(cin >> inmenu) || inmenu != 0)//     Verifica que sea un entero y no otro tipo de dato.
+                        while (!(cin >> inmenu) || inmenu != 0) //     Verifica que sea un entero y no otro tipo de dato.
                         {
-                            cin.clear();//  Limpia el buffer en caso de haber datos invalidos.
-                            cin.ignore(numeric_limits<streamsize>::max(), '\n');//  Limpia el buffer hasta encontrar un carácter valido.
+                            cin.clear();                                         //  Limpia el buffer en caso de haber datos invalidos.
+                            cin.ignore(numeric_limits<streamsize>::max(), '\n'); //  Limpia el buffer hasta encontrar un carácter valido.
                             cout << "Valor invalido.";
                             cout << "Error, posicion incorrecta.\n";
                             cout << "\n==================================================";
@@ -253,10 +219,10 @@ int main() //  Inicio del programa principal.
                         cout << "(0)-No.\n";
                         cout << "\n==================================================";
                         cout << "\nIngrese el numero del (0):";
-                        while (!(cin >> inmenu) || inmenu != 0)//  Valida que sea un dato numerico.
+                        while (!(cin >> inmenu) || inmenu != 0) //  Valida que sea un dato numerico.
                         {
-                            cin.clear();//  Limpia el buffer del flujo de entrada.
-                            cin.ignore(numeric_limits<streamsize>::max(), '\n');//   Limpia el buffer hasta encontrar un salto de linea o EOF.
+                            cin.clear();                                         //  Limpia el buffer del flujo de entrada.
+                            cin.ignore(numeric_limits<streamsize>::max(), '\n'); //   Limpia el buffer hasta encontrar un salto de linea o EOF.
                             cout << "Valor invalido. \nIngrese un valor numerico: ";
                         }
                         break;
