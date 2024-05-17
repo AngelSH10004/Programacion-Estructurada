@@ -1,5 +1,5 @@
 /***********Presentacion.***********
- * Nombre: Angel ALexis Serrano Hernandez.
+ * Nombre: Angel ALexis Serrano Hernandez, Santiago Jimenes Garcia.
  * Fecha: 17/05/2024
  * Programa: Proyecto final.cpp
  * CENTRO UNIVERSITARIO DE LOS ALTOS / UNIVERSDAD DE GUADALAJARA.
